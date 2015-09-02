@@ -26,7 +26,7 @@ RUN \
 ENV M2 $M2_HOME/bin
 ENV PATH $M2:$PATH
 
-RUN apt-get update && apt-get -y install bzip2 git && apt-get clean
+RUN apt-get update && apt-get -y install bzip2 git libfontconfig && apt-get clean
 
 RUN useradd -d $ZEPPELIN_HOME -m -s /bin/bash zeppelin
 
