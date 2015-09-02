@@ -17,5 +17,5 @@ build: dockerfile
 	docker pull $(BASE_IMAGE)
 	docker build --no-cache=true -t $(TAG) .
 
-push: check-spark-version
+push:
 	docker push $(TAG)
