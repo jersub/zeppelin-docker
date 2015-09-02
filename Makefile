@@ -1,5 +1,5 @@
 NAME=zeppelin
-BASE_IMAGE=java:8-jdk
+BASE_IMAGE=buildpack-deps:jessie-curl
 VERSION=master
 SPARK_VERSION=1.4.1
 HADOOP_VERSION=2.4
