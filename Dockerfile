@@ -7,9 +7,6 @@ ENV ZEPPELIN_CONF_DIR ${ZEPPELIN_HOME}/conf
 ENV ZEPPELIN_LOG_DIR ${ZEPPELIN_HOME}/logs
 ENV ZEPPELIN_NOTEBOOK_DIR ${ZEPPELIN_HOME}/notebook
 
-ENV SPARK_VERSION 1.4.1
-ENV HADOOP_VERSION 2.4
-
 # Java 8
 RUN \
   echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list && \
@@ -36,7 +33,7 @@ WORKDIR $ZEPPELIN_HOME
 USER zeppelin
 
 RUN curl -L https://github.com/apache/incubator-zeppelin/archive/${ZEPPELIN_VERSION}.tar.gz | tar xz --strip=1 -C $ZEPPELIN_HOME
-RUN mvn clean package -DskipTests -Pspark-$(echo $SPARK_VERSION | grep -Po "\d+\.\d+") -Dspark.version=$SPARK_VERSION -Phadoop-$HADOOP_VERSION
+RUN mvn clean package -DskipTests  && rm -rf ~/.m2
 
 USER root
 ENTRYPOINT ["bin/zeppelin.sh"]
